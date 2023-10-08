@@ -1,0 +1,15 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<h1>Personal account</h1>
+<p >{{ song.title }}</p>
+<p>{{ song.artist }}</p>
+<p>{{ song.year }}</p>
+<audio controls>
+    <source src="{{ song.full_url }}" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+{% if song.is_purchased %}
+    <p>Разрешена к прослушеванию полной версии</p>
+{% else %}
+    <a href="{% url 'purchase_song' song_id=song.id %}">Купить</a>
+{% endif %}

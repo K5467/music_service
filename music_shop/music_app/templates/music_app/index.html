@@ -1,0 +1,15 @@
+{% for song in songs %}
+    <h2>{{ song.title }}</h2>
+    <p>{{ song.artist }}</p>
+    <p>{{ song.year }}</p>
+    <audio controls>
+        <source src="{{ song.demo_url }}" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    {% if song.is_purchased %}
+        <a href="{% url 'song_detail' song_id=song.id %}">Полная версия</a>
+    {% else %}
+        <a href="{% url 'purchase_song' song_id=song.id %}">Купить</a>
+    {% endif %}
+    <hr>
+{% endfor %}
