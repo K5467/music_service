@@ -1,4 +1,14 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'music_app/static/css/style.css' %}">
+<div class="form_search">
+    <form>
+        <input type="text" placeholder="Искать здесь...">
+        <button type="submit"></button>
+    </form>
+</div>
+
 {% for song in songs %}
+<div>
     <h2>{{ song.title }}</h2>
     <p>{{ song.artist }}</p>
     <p>{{ song.year }}</p>
@@ -12,4 +22,5 @@
         <a href="{% url 'purchase_song' song_id=song.id %}">Купить</a>
     {% endif %}
     <hr>
-{% endfor %}
+    {% endfor %}
+</div>
